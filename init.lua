@@ -151,18 +151,16 @@ require('lazy').setup({
   },
 
   {
-    'sainnhe/sonokai',
-    priority = 1000,
-    config = function()
-      -- Needed
-      vim.o.termguicolors = true
-
-      vim.g.sonokai_transparent_background = 2
-      vim.g.sonokai_better_performance = 1
-      vim.g.sonokai_enable_italic = 1
-
-      vim.cmd[[silent! colorscheme sonokai]]
-    end,
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function ()
+      require("rose-pine").setup({
+        styles = {
+          transparency = true,
+        },
+      })
+      vim.cmd("colorscheme rose-pine")
+    end
   },
 
   {
@@ -172,7 +170,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'sonokai',
+        theme = 'rose-pine',
         component_separators = '|',
         section_separators = '',
       },
@@ -467,7 +465,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<gC-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')

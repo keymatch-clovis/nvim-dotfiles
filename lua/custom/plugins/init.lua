@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -27,85 +28,6 @@ return {
   },
 
   {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      {
-        '<leader>fE',
-        function()
-          require('neo-tree.command').execute { toggle = true, dir = vim.loop.cwd() }
-        end,
-        desc = 'Explorer NeoTree (cwd)',
-      },
-      { '<leader>E', '<leader>fE', desc = 'Explorer NeoTree (cwd)', remap = true },
-      {
-        '<leader>ge',
-        function()
-          require('neo-tree.command').execute { source = 'git_status', toggle = true }
-        end,
-        desc = 'Git explorer',
-      },
-      {
-        '<leader>be',
-        function()
-          require('neo-tree.command').execute { source = 'buffers', toggle = true }
-        end,
-        desc = 'Buffer explorer',
-      },
-    },
-    deactivate = function()
-      vim.cmd [[Neotree close]]
-    end,
-    init = function()
-      if vim.fn.argc(-1) == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == 'directory' then
-          require 'neo-tree'
-        end
-      end
-    end,
-    opts = {
-      sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
-      open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'Outline' },
-      filesystem = {
-        bind_to_cwd = false,
-        follow_current_file = { enabled = true },
-        use_libuv_file_watcher = true,
-      },
-      window = {
-        mappings = {
-          ['<space>'] = 'none',
-        },
-      },
-      default_component_configs = {
-        indent = {
-          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-          expander_collapsed = '',
-          expander_expanded = '',
-          expander_highlight = 'NeoTreeExpander',
-        },
-      },
-    },
-    config = function(_, opts)
-      opts.event_handlers = opts.event_handlers or {}
-      require('neo-tree').setup(opts)
-      vim.api.nvim_create_autocmd('TermClose', {
-        pattern = '*lazygit',
-        callback = function()
-          if package.loaded['neo-tree.sources.git_status'] then
-            require('neo-tree.sources.git_status').refresh()
-          end
-        end,
-      })
-    end,
-  },
-
-  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
@@ -125,8 +47,8 @@ return {
         ocaml = { 'ocamlformat' },
         lua = { 'stylua' },
         php = { 'php_cs_fixer' },
-        javascript = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
       },
     },
     init = function()
@@ -160,5 +82,27 @@ return {
     config = function()
       require('nvim-surround').setup {}
     end,
+  },
+
+  {
+    'mbbill/undotree',
+    config = function()
+      vim.cmd [[ let g:undotree_SetFocusWhenToggle = 1]]
+    end,
+    keys = {
+      {
+        '<leader>U',
+        function()
+          vim.cmd.UndotreeToggle()
+        end,
+        desc = '[U]ndotree',
+      },
+    },
+  },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 }
