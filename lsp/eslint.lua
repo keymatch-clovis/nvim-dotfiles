@@ -17,7 +17,7 @@ return {
             mode = 'all',
         },
         format = true,
-        quiet = false,
+        quiet = true,
         onIgnoredFiles = 'off',
         rulesCustomizations = {},
         run = 'onType',

@@ -3,7 +3,7 @@ vim.lsp.enable({
     "gopls",
     -- JavaScript/TypeScript related
     "vtsls",
-    "eslint",
+    -- "eslint",
     -- Svelte
     "svelte"
 })
