@@ -1,11 +1,6 @@
 vim.lsp.enable({
     "lua_ls",
-    "gopls",
-    -- JavaScript/TypeScript related
-    "vtsls",
-    -- "eslint",
-    -- Svelte
-    "svelte"
+    "dartls",
 })
 
 vim.diagnostic.config({

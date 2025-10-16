@@ -1,5 +1,8 @@
-return { -- Adds git related signs to the gutter, as well as utilities for managing changes
+return {
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    -- If set to lazy, gitsigns does not start for me, for some reason.
+    lazy = false,
     opts = {
         signs = {
             add = { text = '+' },
