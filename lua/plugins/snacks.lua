@@ -1,6 +1,6 @@
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
-require('snacks').setup { }
+require('snacks').setup()
 
 ---[ keys ]
 vim.keymap.set(

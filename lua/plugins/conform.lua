@@ -1,67 +1,16 @@
-return {
-    'stevearc/conform.nvim',
-    keys = {
-        {
-            '<leader>f',
-            function()
-                require('conform').format {
-                    async = true,
-                    lsp_format = 'fallback',
-                }
-            end,
-            mode = '',
-            desc = '[F]ormat buffer',
-        },
+vim.pack.add { "https://github.com/stevearc/conform.nvim" }
+require('conform').setup {
+    notify_on_error = false,
+    default_format_opts = {
+        -- Use external formatters if configured below, otherwise use LSP
+        -- formatting. Set to `false` to disable LSP formatting entirely.
+        lsp_format = 'fallback',
     },
-    opts = {
-        formatters_by_ft = {
-            lua = { 'stylua' },
-            -- Conform can also run multiple formatters sequentially
-            -- python = { "isort", "black" },
-            --
-            -- You can use 'stop_after_first' to run the first available formatter from the list
-            javascript = {
-                'prettierd',
-                'prettier',
-                'biome',
-                stop_after_first = true,
-            },
-            typescript = {
-                'prettierd',
-                'prettier',
-                'biome',
-                stop_after_first = true,
-            },
-            jsonc = {
-                'prettierd',
-                'prettier',
-                'biome',
-                stop_after_first = true,
-            },
-            json = {
-                'prettierd',
-                'prettier',
-                'biome',
-                stop_after_first = true,
-            },
-            javascriptreact = {
-                'prettierd',
-                'prettier',
-                stop_after_first = true,
-            },
-            typescriptreact = {
-                'prettierd',
-                'prettier',
-                stop_after_first = true,
-            },
-            vue = { 'prettierd', 'prettier', stop_after_first = true },
-            astro = { 'prettier' },
-            go = { 'gofumpt', 'golines' },
-        },
-    },
-    init = function()
-        require("conform").formatters.golines = {
-            append_args = { '-m', '80' },
-        }
-    end
 }
+
+vim.keymap.set(
+    { 'n', 'v' },
+    '<leader>f',
+    function() require('conform').format { async = true } end,
+    { desc = '[F]ormat buffer' }
+)

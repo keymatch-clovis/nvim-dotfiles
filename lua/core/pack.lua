@@ -116,3 +116,18 @@ require('plugins.snacks')
 -- Useful status updates for LSP.
 require('plugins.fidget')
 require('plugins.mason')
+
+-- [Formatting]
+require('plugins.conform')
+
+-- [Autocomplete & Snippets]
+-- Snippet engine
+require('plugins.luasnip')
+-- Autocomplete engine
+require('plugins.blink')
+
+-- [Treesitter]
+require('plugins.treesitter')
+
+-- (Movement?)
+require('plugins.flash')

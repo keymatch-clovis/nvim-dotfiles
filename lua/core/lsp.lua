@@ -84,5 +84,12 @@ vim.diagnostic.config({
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.lsp.enable({
-    'lua_ls'
+    'lua_ls',
+    'rust_analyzer',
+    'gopls',
+
+    'vtsls',
+    'astro',
+    'svelte',
+    'prettier',
 })
