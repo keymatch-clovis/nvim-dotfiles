@@ -6,14 +6,6 @@ vim.keymap.set('n', '<leader>o', '<CMD>Oil<CR>', { desc = '[O]pen parent directo
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-vim.keymap.set(
-    'n',
-    '<leader>l',
-    vim.diagnostic.setloclist,
-    { desc = 'Open diagnostic [L]ocation list' }
-)
-
 -- Location list keymaps
 vim.keymap.set('n', '<M-h>', '<cmd>lnext<CR>')
 vim.keymap.set('n', '<M-l>', '<cmd>lprev<CR>')

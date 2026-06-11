@@ -1,15 +1,13 @@
-return {
-    "folke/which-key.nvim",
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    opts = {
-        -- delay between pressing a key and opening which-key (milliseconds)
-        -- this setting is independent of vim.o.timeoutlen
-        delay = 0,
-    },
+-- Useful plugin to show you pending keybinds.
+vim.pack.add { 'https://github.com/folke/which-key.nvim' }
+require('which-key').setup {
+    -- Delay between pressing a key and opening which-key (milliseconds)
+    delay = 0,
     -- Document existing key chains
     spec = {
-        { '<leader>s', group = '[S]earch' },
+        { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+        { 'gr', group = 'LSP Actions', mode = { 'n' } },
     },
 }

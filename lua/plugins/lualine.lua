@@ -1,8 +1,10 @@
-return {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      options = { theme = 'kanagawa' },
-      extensions = { 'oil', 'mason', 'lazy', 'fzf' },
+vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
+
+require('lualine').setup {
+    options = {
+        theme = 'auto',
+    },
+    extensions = {
+        'oil', 'mason', 'fzf',
     },
 }
