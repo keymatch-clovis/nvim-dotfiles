@@ -85,7 +85,7 @@ require('plugins.mini')
 require('plugins.lualine')
 
 -- File navigation
-require('plugins.snacks')
+require('plugins.fzf-lua')
 
 -- [[ LSP Configuration ]]
 -- Brief aside: **What is LSP?**
