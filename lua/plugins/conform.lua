@@ -6,6 +6,12 @@ require('conform').setup {
         -- formatting. Set to `false` to disable LSP formatting entirely.
         lsp_format = 'fallback',
     },
+    formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        json = { "prettier" },
+    },
 }
 
 vim.keymap.set(
